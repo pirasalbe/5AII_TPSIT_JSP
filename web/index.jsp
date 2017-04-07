@@ -4,6 +4,12 @@
     Author     : pirasalbe
 --%>
 
+<style>
+    body {
+        background-image: url("index.png");
+    }
+</style>
+
 <%@include file="header.jsp" %>
 
 
