@@ -4,6 +4,9 @@
     Author     : pirasalbe
 --%>
 
+<%-- librerie --%>
+<%@page import="java.sql.ResultSet" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,9 +26,9 @@
                             </div>
                             <ul class='nav navbar-nav'>
                                     <li class='dropdown'>
-                                        <li><a href='report'>Visualizza ordine</a></li>
-                                        <li><a href='#'>Inserisci ordine</a></li>
-                                        <li><a href='login'>Elimina ordine</a></li>
+                                        <li><a href='#'>Visualizza ordine</a></li>
+                                        <li><a href='prodotti.jsp'>Inserisci ordine</a></li>
+                                        <li><a href='#'>Elimina ordine</a></li>
                                     </li>
                             </ul>
                     </div>

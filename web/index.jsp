@@ -6,7 +6,7 @@
 
 <style>
     body {
-        background-image: url("index.png");
+        background-image: url("img/index.png");
     }
 </style>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 07, 2017 at 09:19 
+-- Generation Time: Apr 07, 2017 at 10:28 
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -62,6 +62,17 @@ CREATE TABLE `prodotto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `prodotto`
+--
+
+INSERT INTO `prodotto` (`cod`, `immagine`, `nome`, `descrizione`, `prezzo`) VALUES
+(1, NULL, 'Nintendo Wii', 'una triste console', 109.99),
+(2, NULL, 'Nintendo DS', 'una vecchia console', 50.99),
+(3, NULL, 'Giulio Pertile', 'un triste giocatore', 0.98),
+(4, NULL, 'Overwatch', 'uno zoo', 39.99),
+(5, NULL, 'Apple iPhone', 'un telefono costoso', 1200.96);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -96,7 +107,7 @@ ALTER TABLE `ordine`
 -- AUTO_INCREMENT for table `prodotto`
 --
 ALTER TABLE `prodotto`
-  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
