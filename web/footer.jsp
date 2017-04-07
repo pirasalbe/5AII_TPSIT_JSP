@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : Apr 7, 2017, 9:07:16 AM
+    Document   : footer
+    Created on : Apr 7, 2017, 9:07:07 AM
     Author     : pirasalbe
 --%>
 
