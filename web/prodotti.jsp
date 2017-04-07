@@ -4,11 +4,11 @@
     Author     : pirasalbe
 --%>
 
-<%-- query --%>
-<% ResultSet r = MySql.prodotti(); %>
-
 <%-- page --%>
 <%@include file="header.jsp" %>
+
+<%-- query --%>
+<% ResultSet r = MySql.prodotti(); %>
 
 <div class="container">
 		
@@ -28,10 +28,10 @@
 
                     <tbody>
                         <% while(r.next()){ %>
-                        <form>
+                        <form action="carrello.jsp" method="post">
                             <tr>
                                 <td><img src="img/hw.jpg" alt="hw :)"></td>
-                                <td><p name="<%= r.getInt("cod") %>"><%= r.getInt("cod") %></p></td>
+                                <td><p name="codice"><%= r.getInt("cod") %></p></td>
                                 <td><%= r.getString("nome") %></td>
                                 <td><%= r.getString("descrizione") %></td>
                                 <td><%= r.getFloat("prezzo") %></td>
