@@ -8,6 +8,7 @@
 <%@page import="java.sql.ResultSet" %>
 <%@page import="javax.servlet.http.Cookie" %>
 <%@page import="Jamazon.MySql" %>
+<%@page import="Jamazon.prodotto" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -31,6 +32,7 @@
                                         <li><a href='#'>Visualizza ordine</a></li>
                                         <li><a href='prodotti.jsp'>Inserisci ordine</a></li>
                                         <li><a href='#'>Elimina ordine</a></li>
+                                        <li><a href='carrello.jsp'>Carrello</a></li>
                                     </li>
                             </ul>
                     </div>

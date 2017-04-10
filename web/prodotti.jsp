@@ -28,10 +28,10 @@
 
                     <tbody>
                         <% while(r.next()){ %>
-                        <form action="carrello.jsp" method="post">
+                        <form action="carrello.jsp?codice=<%= r.getInt("cod") %>" method="get">
                             <tr>
                                 <td><img src="img/hw.jpg" alt="hw :)"></td>
-                                <td><p name="codice"><%= r.getInt("cod") %></p></td>
+                                <td><%= r.getInt("cod") %></td>
                                 <td><%= r.getString("nome") %></td>
                                 <td><%= r.getString("descrizione") %></td>
                                 <td><%= r.getFloat("prezzo") %></td>
