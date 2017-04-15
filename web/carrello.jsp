@@ -102,8 +102,8 @@
         
     <br>
         
-    <form action="ordini.jsp" method="get">
-        <input type='submit' class='btn btn-default' name="update" value='Acquista'>
+    <form action="submit.jsp" method="get">
+        <input type='submit' class='btn btn-default' value='Acquista'>
     </form>             
         
 </div>

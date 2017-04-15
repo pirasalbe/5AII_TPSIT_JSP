@@ -7,8 +7,16 @@
 <%@include file="header.jsp" %>
 <%@page import="java.util.*" %>
 
+
+<%-- obtain value --%>
+<% 
+    String cf = request.getParameter("cf"), indirizzo = request.getParameter("indirizzo"), pagamento = request.getParameter("pagamento");
+    
+%>
+
 <%-- query --%>
-<% ResultSet r = MySql.prodotti(); 
+<% 
+    ResultSet r = MySql.prodotti(); 
 
     List<prodotto> results = new ArrayList<>();
     while(r.next()) {
@@ -21,39 +29,20 @@
 <% 
     Cookie[] cookies = request.getCookies(); 
     
-    //int cod = Integer.parseInt(request.getParameter("codice"));
-    //int amount = Integer.parseInt(request.getParameter("quantita"));
-    
-    String codice = request.getParameter("codice"), quantita = request.getParameter("quantita");
-    int age = 60*60*24*365;
-    
-    //remove cookie
-    if(request.getParameter("delete") != null || quantita!=null && quantita.equals("0"))
-        age = 0;
-    
-    //add cookie
-    if(codice!=null && quantita!=null){
-        for(Cookie c : cookies)
-            if(c.getName().equals(codice)){                
-                StringBuilder sb = new StringBuilder();
-                sb.append("");
-                
-                String now = c.getValue();
-                if(request.getParameter("update") != null)
-                    now = "0";
-                sb.append(Integer.parseInt(now) + Integer.parseInt(quantita));
-                quantita = sb.toString();
-            }
+    if( cf != null && indirizzo != null && pagamento != null){
+        out.println(MySql.submitOrder(cf, indirizzo, pagamento, cookies));
         
-        Cookie temp = new Cookie(codice, quantita);
-        temp.setMaxAge(age);
-        response.addCookie(temp);
-        response.sendRedirect("carrello.jsp");
+        for (Cookie cookie : cookies) {
+            cookie.setMaxAge(0);
+
+            response.addCookie(cookie);
+        }
+        response.sendRedirect("ordini.jsp");
     }
 %>
 
 <div class="container">
-    <p class="h1">Carrello</p>
+    <p class="h1">Ordini</p>
 
     <div class="table-responsive">          
             <table class="table">
@@ -70,41 +59,20 @@
                     </thead>
 
                     <tbody>
-                        <% for(Cookie c : cookies){ 
-                            prodotto result = null;
-                            
-                            for(prodotto p : results) {
-                                try{
-                                    if(Integer.parseInt(c.getName()) == p.cod)
-                                        result = p;
-                                } catch(Exception e){
-                                    System.out.println(":)");
-                                }
-                            }
-                                
-                            if(result != null) {
-                        %>
                         <form action="carrello.jsp" method="get">
                             <tr>
                                 <td><img src="img/hw.jpg" alt="hw :)"></td>
-                                <td><%= c.getName() %><input type="hidden" name="codice" value="<%= c.getName() %>"></td>
-                                <td><%= result.nome %></td>
-                                <td><%= result.descrizione %></td>
-                                <td><%= result.prezzo * Integer.parseInt(c.getValue()) %></td>
-                                <td><input type="number" name="quantita" value="<%= c.getValue() %>" max="100" min="0"></td>
-                                <td><input type='submit' class='btn btn-default' name="update" value='Aggiorna'><input type='submit' class='btn btn-default' name="delete" value='Elimina'></td>
+                                <td>ciao</td>
+                                <td>ciao</td>
+                                <td>ciao</td>
+                                <td>ciao</td>
+                                <td>ciao</td>
+                                <td><input type='submit' class='btn btn-default' name="delete" value='Elimina'></td>
                             </tr>
                         </form>
-                        <% } } %>
                     </tbody>
             </table>
-    </div>
-        
-    <br>
-        
-    <form action="ordini.jsp" method="get">
-        <input type='submit' class='btn btn-default' name="update" value='Acquista'>
-    </form>             
+    </div>        
         
 </div>
 

@@ -29,8 +29,8 @@
                             </div>
                             <ul class='nav navbar-nav'>
                                     <li class='dropdown'>
-                                        <li><a href='ordini.jsp'>Visualizza ordine</a></li>
-                                        <li><a href='prodotti.jsp'>Inserisci ordine</a></li>
+                                        <li><a href='ordini.jsp'>Ordini</a></li>
+                                        <li><a href='prodotti.jsp'>Catalogo</a></li>
                                         <li><a href='carrello.jsp'>Carrello</a></li>
                                     </li>
                             </ul>
