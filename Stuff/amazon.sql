@@ -2,10 +2,10 @@
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 07, 2017 at 10:28 
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.1
+-- Host: 127.0.0.1
+-- Creato il: Apr 15, 2017 alle 13:45
+-- Versione del server: 10.1.21-MariaDB
+-- Versione PHP: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,12 +23,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dettagli`
+-- Struttura della tabella `dettagli`
 --
 
 CREATE TABLE `dettagli` (
   `ordine` int(11) NOT NULL,
-  `numero` int(11) NOT NULL,
   `prodotto` int(11) NOT NULL,
   `quantita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -36,7 +35,7 @@ CREATE TABLE `dettagli` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ordine`
+-- Struttura della tabella `ordine`
 --
 
 CREATE TABLE `ordine` (
@@ -50,7 +49,7 @@ CREATE TABLE `ordine` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prodotto`
+-- Struttura della tabella `prodotto`
 --
 
 CREATE TABLE `prodotto` (
@@ -62,7 +61,7 @@ CREATE TABLE `prodotto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `prodotto`
+-- Dump dei dati per la tabella `prodotto`
 --
 
 INSERT INTO `prodotto` (`cod`, `immagine`, `nome`, `descrizione`, `prezzo`) VALUES
@@ -73,50 +72,52 @@ INSERT INTO `prodotto` (`cod`, `immagine`, `nome`, `descrizione`, `prezzo`) VALU
 (5, NULL, 'Apple iPhone', 'un telefono costoso', 1200.96);
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `dettagli`
+-- Indici per le tabelle `dettagli`
 --
 ALTER TABLE `dettagli`
-  ADD PRIMARY KEY (`ordine`,`numero`);
+  ADD PRIMARY KEY (`ordine`,`prodotto`),
+  ADD KEY `numero` (`prodotto`);
 
 --
--- Indexes for table `ordine`
+-- Indici per le tabelle `ordine`
 --
 ALTER TABLE `ordine`
   ADD PRIMARY KEY (`cod`);
 
 --
--- Indexes for table `prodotto`
+-- Indici per le tabelle `prodotto`
 --
 ALTER TABLE `prodotto`
   ADD PRIMARY KEY (`cod`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT per le tabelle scaricate
 --
 
 --
--- AUTO_INCREMENT for table `ordine`
+-- AUTO_INCREMENT per la tabella `ordine`
 --
 ALTER TABLE `ordine`
-  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `prodotto`
+-- AUTO_INCREMENT per la tabella `prodotto`
 --
 ALTER TABLE `prodotto`
   MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- Constraints for dumped tables
+-- Limiti per le tabelle scaricate
 --
 
 --
--- Constraints for table `dettagli`
+-- Limiti per la tabella `dettagli`
 --
 ALTER TABLE `dettagli`
-  ADD CONSTRAINT `dettagli_ibfk_1` FOREIGN KEY (`ordine`) REFERENCES `ordine` (`cod`);
+  ADD CONSTRAINT `dettagli_ibfk_1` FOREIGN KEY (`ordine`) REFERENCES `ordine` (`cod`),
+  ADD CONSTRAINT `dettagli_ibfk_2` FOREIGN KEY (`prodotto`) REFERENCES `prodotto` (`cod`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

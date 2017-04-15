@@ -7,8 +7,9 @@
 <%-- librerie --%>
 <%@page import="java.sql.ResultSet" %>
 <%@page import="javax.servlet.http.Cookie" %>
-<%@page import="Jamazon.MySql" %>
-<%@page import="Jamazon.prodotto" %>
+<%@page import="Jamazon.MySql " %>
+<%@page import="Jamazon.ordine"%>
+<%@page import="Jamazon.prodotto " %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

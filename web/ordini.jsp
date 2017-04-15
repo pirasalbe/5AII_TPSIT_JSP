@@ -12,17 +12,8 @@
 <% 
     String cf = request.getParameter("cf"), indirizzo = request.getParameter("indirizzo"), pagamento = request.getParameter("pagamento");
     
-%>
-
-<%-- query --%>
-<% 
-    ResultSet r = MySql.prodotti(); 
-
-    List<prodotto> results = new ArrayList<>();
-    while(r.next()) {
-        prodotto temp = new prodotto(r.getInt("cod"), r.getString("nome"), r.getString("descrizione"), r.getFloat("prezzo"));
-        results.add(temp);
-    }
+    if(request.getParameter("cod")!=null)
+        MySql.elimina(Integer.parseInt(request.getParameter("cod")));
 %>
 
 <%-- Cookie --%>
@@ -48,28 +39,33 @@
             <table class="table">
                     <thead>
                             <tr>
-                                <th>Immagine</th>
                                 <th>Codice</th>
-                                <th>Nome</th>
-                                <th>Descrizione</th>
-                                <th>Prezzo</th>
-                                <th>Quantità</th>
-                                <th>Gestisci</th>
+                                <th>Codice Fiscale</th>
+                                <th>Indirizzo</th>
+                                <th>Data</th>
+                                <th>Pagamento</th>
+                                <th>Info</th>
                             </tr>
                     </thead>
-
+                        
                     <tbody>
-                        <form action="carrello.jsp" method="get">
-                            <tr>
-                                <td><img src="img/hw.jpg" alt="hw :)"></td>
-                                <td>ciao</td>
-                                <td>ciao</td>
-                                <td>ciao</td>
-                                <td>ciao</td>
-                                <td>ciao</td>
-                                <td><input type='submit' class='btn btn-default' name="delete" value='Elimina'></td>
-                            </tr>
-                        </form>
+                        <% 
+                            ResultSet r = MySql.ordini();
+
+                            int cod = -1;
+                            while(r.next()) {
+                                if(r.getInt("o.cod")!=cod) {
+                                    cod = r.getInt("o.cod");
+                        %>
+                        <tr>
+                            <td><%= r.getInt("o.cod") %></td>
+                            <td><%= r.getString("codFiscale") %></td>
+                            <td><%= r.getString("indirizzo") %></td>
+                            <td><%= r.getDate("data") %></td>
+                            <td><%= r.getString("pagamento") %></td>
+                            <td><a href="info.jsp?cod=<%= r.getInt("o.cod") %>" type='submit' class='btn btn-default'>Informazioni</a></td>
+                        </tr>
+                        <% } } %>
                     </tbody>
             </table>
     </div>        

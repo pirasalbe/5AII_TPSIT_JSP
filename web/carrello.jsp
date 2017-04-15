@@ -99,13 +99,12 @@
                     </tbody>
             </table>
     </div>
-        
+    
     <br>
-        
-    <form action="submit.jsp" method="get">
-        <input type='submit' class='btn btn-default' value='Acquista'>
-    </form>             
-        
+                        
+    <a href="submit.jsp" type='submit' class='btn btn-default'>Acquista</a>
+    <a href="prodotti.jsp" type='submit' class='btn btn-default'>Continua Navigazione</a>
+                        
 </div>
 
 

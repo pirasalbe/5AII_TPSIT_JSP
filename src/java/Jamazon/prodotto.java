@@ -14,6 +14,7 @@ public class prodotto {
     public String nome;
     public String descrizione;
     public float prezzo;
+    public int quantita;
     
     public prodotto(int cod, String nome, String descrizione, float prezzo){
         this.cod=cod;

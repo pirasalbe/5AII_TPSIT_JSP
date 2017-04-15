@@ -47,6 +47,66 @@ public class MySql {
         return r;
     }
     
+   
+    public static void elimina(int cod){
+        java.sql.Date date = new java.sql.Date(System.currentTimeMillis());
+        
+        String query = "delete from dettagli "
+                + " where ordine=? ";
+
+        Connection c = null;
+        PreparedStatement s = null;
+        ResultSet r = null;
+
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            c = DriverManager.getConnection(server, user, pass);
+            
+            //query
+            s = c.prepareStatement(query);
+            
+            s.setInt(1, cod);
+            
+            s.executeUpdate();
+            
+            //delete order
+            query = "delete from ordine "
+                + " where cod=? ";
+            
+            s = c.prepareStatement(query);
+            
+            s.setInt(1, cod);
+            
+            s.executeUpdate();
+            
+        } catch(ClassNotFoundException | SQLException e){
+            System.out.println(e); //for debug purpose
+        }
+    }
+    
+    public static ResultSet ordini(){
+        String query = "select * "
+                    + "from ordine o inner join dettagli d on o.cod=d.ordine "
+                    + "inner join prodotto p on p.cod=d.prodotto";
+
+        Connection c = null;
+        Statement s = null;
+        ResultSet r = null;
+
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            c = DriverManager.getConnection(server, user, pass);
+            s = c.createStatement();
+
+            //query
+            r = s.executeQuery(query);
+        } catch(ClassNotFoundException | SQLException e){
+            System.out.println(e); //for debug purpose
+        }
+           
+        return r;
+    }
+    
     public static String submitOrder(String cf, String indirizzo, String pagamento, Cookie[] prodotti){
         java.sql.Date date = new java.sql.Date(System.currentTimeMillis());
         
