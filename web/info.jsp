@@ -102,7 +102,7 @@
             <label for="">Quantita: </label>
         </div>
         <div class="col-sm-2">
-            <%= p.cod %>
+            <%= p.quantita %>
         </div>
         <div class="col-sm-2">
             <label for="">Nome: </label>
